@@ -1,0 +1,88 @@
+---
+import "../styles/style.css"
+import data from "../../public/data.json"
+import Card from "../components/Card.astro"
+import Daniel from "../../public/images/image-daniel.jpg"
+import Jeanette from "../../public/images/image-jeanette.jpg"
+import Jonathan from "../../public/images/image-jonathan.jpg"
+import Kira from "../../public/images/image-kira.jpg"
+import Patrick from "../../public/images/image-patrick.jpg"
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	</head>
+	<body>
+		<main class="main">
+			<div class="testimonials__container">
+				<Card
+					ident="card--1"
+					image={Daniel}
+					name={data.daniel.name}
+					grad={data.daniel.grad}
+					title={data.daniel.title}
+					text={data.daniel.text}
+				/>
+
+				<Card
+					ident="card--2"
+					image={Jonathan}
+					name={data.jonathan.name}
+					grad={data.jonathan.grad}
+					title={data.jonathan.title}
+					text={data.jonathan.text}
+				/>
+				<Card
+					ident="card--3"
+					image={Jeanette}
+					name={data.jeanette.name}
+					grad={data.jeanette.grad}
+					title={data.jeanette.title}
+					text={data.jeanette.text}
+				/>
+				<Card
+					ident="card--4"
+					image={Patrick}
+					name={data.patrick.name}
+					grad={data.patrick.grad}
+					title={data.patrick.title}
+					text={data.patrick.text}
+				/>
+				<Card
+					ident="card--5"
+					image={Kira}
+					name={data.kira.name}
+					grad={data.kira.grad}
+					title={data.kira.title}
+					text={data.kira.text}
+				/>
+			</div>
+		</main>
+	</body>
+</html>
+
+<style>
+	.main {
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 20px 0;
+	}
+	.testimonials__container {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	@media screen and (min-width: 1100px) {
+		.testimonials__container {
+			display: grid;
+			grid-template-columns: 25.5rem 25.5rem 25.5rem 25.5rem;
+			grid-template-rows: 28.2rem 26.6rem;
+		}
+	}
+</style>
