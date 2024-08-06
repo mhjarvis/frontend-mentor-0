@@ -1,0 +1,127 @@
+---
+import Image from "astro/components/Image.astro"
+import Woman from "../../public/images/desktop/image-woman-in-videocall.jpg"
+import Women from "../../public/images/desktop/image-women-videochatting.jpg"
+import Man from "../../public/images/desktop/image-man-texting.jpg"
+import Men from "../../public/images/desktop/image-men-in-meeting.jpg"
+import NumberElement from "./NumberElement.astro"
+---
+
+<footer class="footer">
+	<div class="images__container">
+		<Image src={Woman} alt="Woman in videocall" class="images__image" />
+		<Image src={Women} alt="Women videochatting" class="images__image" />
+		<Image src={Man} alt="Man texting" class="images__image" />
+		<Image src={Men} alt="Men in meeting" class="images__image" />
+	</div>
+	<div class="text__container">
+		<p class="text__pre">BUILT FOR MODERN USE</p>
+		<h2 class="text__title">Smarter meetings, all in one place</h2>
+		<p class="text__text">
+			Send messages, share files, show your screen, and record your meetings —
+			all in one workspace. Control who can join with invite-only team access,
+			data encryption, and data export.
+		</p>
+	</div>
+	<NumberElement num="02" />
+</footer>
+
+<style>
+	.footer {
+		max-width: 37.5rem;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 4rem 0;
+		background-color: var(--white);
+	}
+
+	@media screen and (min-width: 768px) {
+		.footer {
+			max-width: 768px;
+		}
+	}
+
+	@media screen and (min-width: 1440px) {
+		.footer {
+			max-width: 1440px;
+		}
+	}
+
+	.images__container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 20px;
+		flex-wrap: wrap;
+	}
+
+	.images__image {
+		width: 14.4rem;
+		height: auto;
+		border-radius: 12px;
+	}
+
+	@media screen and (min-width: 768px) {
+		.images__image {
+			width: 16rem;
+		}
+	}
+
+	@media screen and (min-width: 1440px) {
+		.images__image {
+			width: 25.6rem;
+		}
+	}
+
+	.text__container {
+		max-width: 31rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 6.4rem 0;
+	}
+
+	@media screen and (min-width: 768px) {
+		.text__container {
+			max-width: 48rem;
+		}
+	}
+	.text__pre {
+		font-size: 1.2rem;
+		font-weight: 900;
+		color: var(--cyan-600);
+		letter-spacing: 4px;
+		line-height: 110%;
+		margin-bottom: 1.6rem;
+	}
+
+	@media screen and (min-width: 768px) {
+		.text__pre {
+			font-size: 1.4rem;
+		}
+	}
+
+	.text__title {
+		text-align: center;
+		font-size: 3.2rem;
+		font-weight: 900;
+		line-height: 110%;
+		margin-bottom: 3.2rem;
+	}
+
+	@media screen and (min-width: 768px) {
+		.text__title {
+			max-width: 40rem;
+		}
+	}
+
+	.text__text {
+		text-align: center;
+		font-size: 1.6rem;
+		font-weight: 400;
+		line-height: 150%;
+		color: var(--slate-600);
+	}
+</style>
