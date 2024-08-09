@@ -1,8 +1,5 @@
 ---
-import "../styles/main.scss"
-import Picture from "astro/components/Picture.astro"
-import small from "../../public/images/icon-success.svg"
-import big from "../../public/images/illustration-sign-up-desktop.svg"
+import Success from "../components/Success.astro"
 ---
 
 <!doctype html>
@@ -13,31 +10,235 @@ import big from "../../public/images/illustration-sign-up-desktop.svg"
 		<title>Newsletter sign-up form</title>
 	</head>
 	<body>
-		<main class="main">
-			<h1>this is image, not picture</h1>
-			<img src="images/illustration-sign-up-mobile.svg" alt="" />
-			<!-- Sign-up form start -->
-
-			Stay updated! Join 60,000+ product managers receiving monthly updates on:
-			Product discovery and building what matters Measuring to ensure updates
-			are a success And much more! Email address email@company.com Subscribe to
-			monthly newsletter
-
-			<!-- Sign-up form end -->
-
-			<!-- Success message start -->
-
-			Thanks for subscribing! A confirmation email has been sent to
-			ash@loremcompany.com. Please open it and click the button inside to
-			confirm your subscription. Dismiss message
-
+		<Success />
+		<main class="main" id="main">
 			<picture>
 				<source
 					srcset="../images/illustration-sign-up-desktop.svg"
-					media="(min-width: 800px"
+					media="(min-width: 1024px"
 				/>
-				<img src="images/icon-success.svg" />
+				<img src="images/illustration-sign-up-mobile.svg" />
 			</picture>
+
+			<section class="content">
+				<h1 class="content__title">Stay updated!</h1>
+
+				<!-- List Element -->
+				<ul class="list">
+					<p class="list__description">
+						Join 60,000+ product managers receiving monthly updates on:
+					</p>
+					<li class="list__item">
+						<img
+							src="/public/images/icon-list.svg"
+							alt="check-mark"
+							srcset=""
+							class="list__item--icon"
+						/>
+						<p class="list__item--text">
+							Product discovery and building what matters
+						</p>
+					</li>
+					<li class="list__item">
+						<img
+							src="/public/images/icon-list.svg"
+							alt="check-mark"
+							srcset=""
+							class="list__item--icon"
+						/>
+						<p class="list__item--text">
+							Measuring to ensure updates are a success
+						</p>
+					</li>
+					<li class="list__item">
+						<img
+							src="/public/images/icon-list.svg"
+							alt="check-mark"
+							srcset=""
+							class="list__item--icon"
+						/>
+						<p class="list__item--text">And much more!</p>
+					</li>
+				</ul>
+
+				<!-- Form Element -->
+				<form action="" class="form" id="form">
+					<div class="label-container">
+						<label for="form__email" class="form__label">Email address</label>
+						<p class="validate-error" id="validate-error">
+							Valid email required
+						</p>
+					</div>
+					<input
+						type="email"
+						class="form__email"
+						id="form__email"
+						placeholder="email@company.com"
+						required
+					/>
+					<input
+						type="button"
+						value="Subscribe to monthly newsletter"
+						class="form__submit"
+						id="form__submit"
+					/>
+				</form>
+			</section>
 		</main>
 	</body>
 </html>
+
+<script>
+	const main = document.getElementById("main")
+	const submit = document.getElementById("form__submit")
+	const success = document.getElementById("success")
+	const email = document.getElementById("form__email") as HTMLInputElement
+	const error = document.getElementById("validate-error")
+	const container = document.getElementById("form__email")
+	const form = document.getElementById("form") as HTMLFormElement
+
+	submit.addEventListener("click", (e) => {
+		e.preventDefault()
+
+		if (validateEmail(email.value) === true) {
+			main.style.display = "none"
+			success.style.display = "block"
+			error.style.display = "none"
+			container.style.borderColor = "hsl(231, 7%, 60%)"
+			container.style.color = "black"
+			container.style.backgroundColor = "white"
+			form.reset()
+		} else {
+			error.style.display = "block"
+			container.style.borderColor = "hsl(4, 100%, 67%)"
+			container.style.color = "hsl(4, 100%, 67%)"
+			container.style.backgroundColor = "hsl(4, 100%, 67%, 20%)"
+		}
+	})
+
+	function validateEmail(email) {
+		const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+		return regex.test(email)
+	}
+</script>
+
+<style lang="scss">
+	@import "../styles/main.scss";
+
+	main {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		max-width: 37.5rem;
+		background-color: $white;
+	}
+
+	@media screen and (min-width: 1024px) {
+		main {
+			max-width: 930px;
+			width: 100%;
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			padding: 2rem 0;
+		}
+
+		main > picture {
+			padding-right: 2rem;
+		}
+	}
+
+	.content {
+		padding: 2.5rem;
+
+		&__title {
+			font-size: 40px;
+			font-family: "Roboto-Bold";
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		.content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 37rem;
+			padding: 0 6rem;
+
+			&__title {
+				font-size: 5.6rem;
+			}
+		}
+	}
+
+	.list {
+		display: grid;
+		gap: 10px;
+		&__description {
+			line-height: 150%;
+			margin: 2rem 0;
+		}
+		&__item {
+			display: flex;
+			align-items: start;
+
+			&--icon {
+			}
+			&--text {
+				line-height: 150%;
+				margin-left: 2rem;
+			}
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		.list {
+			font-size: 1.6rem;
+		}
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		margin: 4rem 0 2rem 0;
+		&__label {
+		}
+
+		&__email {
+			padding: 1.5rem 2rem;
+			border-radius: 8px;
+			border: 1px solid $gray;
+			color: black;
+			font-weight: 100;
+		}
+
+		&__submit {
+			margin-top: 2rem;
+			padding: 1.5rem 0;
+			border: none;
+			border-radius: 8px;
+			background-color: $slateGray;
+			color: $white;
+			&:hover {
+				background-image: linear-gradient($tomato, hsl(345, 59%, 60%));
+				box-shadow:
+					hsl(4, 100%, 67%, 50%) 0px 10px 36px 0px,
+					hsl(4, 100%, 67%, 50%) 0px 0px 0px 1px;
+			}
+		}
+	}
+
+	.label-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 1.2rem;
+		font-family: "Roboto-Bold";
+		margin-bottom: 0.5rem;
+	}
+
+	.validate-error {
+		display: none;
+		color: $tomato;
+	}
+</style>

@@ -1,0 +1,104 @@
+---
+
+---
+
+<div class="success" id="success">
+	<img
+		src="/public/images/icon-list.svg"
+		alt="check-mark"
+		srcset=""
+		class="success__icon"
+	/>
+	<h2 class="success__title">Thanks for subscribing!</h2>
+	<p class="success__content">
+		A confirmation email has been sent to <span class="success__content--bold"
+			>ash@loremcompany.com</span
+		>. Please open it and click the button inside to confirm your subscription
+	</p>
+	<button class="success__button" id="success__button">Dismiss message</button>
+</div>
+
+<script>
+	const button = document.getElementById("success__button")
+	const success = document.getElementById("success")
+	const main = document.getElementById("main")
+
+	button.addEventListener("click", () => {
+		success.style.display = "none"
+		main.style.display = "flex"
+	})
+</script>
+
+<style lang="scss">
+	@import "../styles/main.scss";
+
+	.success {
+		display: none;
+		position: absolute;
+		max-width: 37.5rem;
+		height: 100%;
+		background-color: $white;
+		z-index: 10;
+		padding: 2rem;
+		&__icon {
+			width: 6.4rem;
+			margin-top: 10rem;
+		}
+
+		&__title {
+			font-size: 4rem;
+			font-family: "Roboto-Bold";
+			line-height: 100%;
+			margin: 2rem 0;
+		}
+		&__content {
+			font-family: "Roboto-Regular";
+			&--bold {
+				font-family: "Roboto-Bold";
+			}
+		}
+		&__button {
+			width: 100%;
+			margin-top: 2rem;
+			padding: 1.5rem 0;
+			border: none;
+			border-radius: 8px;
+			background-color: $slateGray;
+			color: $white;
+			margin-top: 40rem;
+
+			&:hover {
+				background-image: linear-gradient($tomato, hsl(345, 59%, 60%));
+				box-shadow:
+					hsl(4, 100%, 67%, 50%) 0px 10px 36px 0px,
+					hsl(4, 100%, 67%, 50%) 0px 0px 0px 1px;
+			}
+		}
+	}
+
+	@media screen and (min-width: 1024px) {
+		.success {
+			align-items: center;
+			box-sizing: border-box;
+			min-width: 50rem;
+			height: 52rem;
+			padding: 2rem 4rem;
+			border: 1px solid red;
+
+			&__title {
+				font-size: 5.6rem;
+			}
+			&__icon {
+				margin-top: 4rem;
+				margin-bottom: 3rem;
+			}
+
+			&__content {
+			}
+
+			&__button {
+				margin-top: 4rem;
+			}
+		}
+	}
+</style>
