@@ -1,0 +1,71 @@
+/*  ----------------------------------------------  */
+/*                 CORE STYLES                      */
+/*  ----------------------------------------------  */
+
+/* FONTS */
+
+@font-face {
+	font-family: "Roboto";
+	src: url("../../public/fonts/Roboto-Bold.ttf") format("truetype"),
+		url("../../public/fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+/* COLORS */
+$tomato: hsl(4, 100%, 67%);
+$slateGray: hsl(234, 29%, 20%);
+$charcoalGray: hsl(235, 18%, 26%);
+$gray: hsl(231, 7%, 60%);
+$white: hsl(0, 0%, 100%);
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	/* Add font-family as needed */
+	font-family: "Roboto", serif;
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 1.5;
+	min-height: 100vh;
+	/* border & padding accounted for in element's width/height */
+	box-sizing: border-box;
+}
+
+@media screen and (min-width: 360px) {
+	.body {
+		font-size: 31.25%;
+	}
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/*  ----------------------------------------------  */
+/*                   BREAKPOINTS                    */
+/*  ----------------------------------------------  */
+
+/*  ----------------------------------------------  */
+/*                     COMMENTS                     */
+/*  ----------------------------------------------  */
